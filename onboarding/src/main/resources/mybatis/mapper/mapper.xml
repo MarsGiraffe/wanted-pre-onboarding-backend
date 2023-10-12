@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.internship.onboarding.dao.AnnouncementDao">
+	<insert id="insertAnn" parameterType="ann">
+		INSERT INTO ANNOUNCEMENT VALUES 
+			(#{ann_id},#{company_name},#{ann_info},
+			#{positions},#{compensation},#{using_skill})
+	</insert>
+	
+	<update id="updateAnn" parameterType="ann">
+		UPDATE ANNOUNCEMENT 
+			SET COMPANY_NAME = #{company_name},
+				ANN_INFO = #{ann_info},
+				POSITIONS = #{positions},
+				COMPENSATION = #{compensation},
+				USING_SKILL = #{using_skill}
+			WHERE ann_id = #{ann_id}
+	</update>
+
+	<select id="schAnn" parameterType="String" resultType="ann">
+		SELECT * 
+		FROM ANNOUNCEMENT 
+		WHERE COMPANY_NAME like '%'||#{company_name}||'%' 
+		ORDER BY ANN_ID
+	</select>
+</mapper>
