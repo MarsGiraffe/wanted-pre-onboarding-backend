@@ -20,9 +20,15 @@
 	</update>
 
 	<select id="schAnn" parameterType="String" resultType="ann">
-		SELECT * 
-		FROM ANNOUNCEMENT 
-		WHERE COMPANY_NAME like '%'||#{company_name}||'%' 
+		SELECT a.*, c.NATION, c.REGION 
+		FROM ANNOUNCEMENT a, COMPANY c 
+		WHERE a.COMPANY_NAME = c.COMPANY_NAME 
+		AND a.COMPANY_NAME like '%'||#{company_name}||'%' 
 		ORDER BY ANN_ID
 	</select>
+	
+	<delete id="deleteAnn" parameterType="String">
+		DELETE announcement 
+		WHERE ann_id = #{ann_id}
+	</delete>
 </mapper>

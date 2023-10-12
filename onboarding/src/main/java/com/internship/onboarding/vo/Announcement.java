@@ -7,17 +7,33 @@ public class Announcement {
 	private String positions;
 	private int compensation;
 	private String using_skill;
+	private String nation;
+	private String region;
 	public Announcement() {
 		// TODO Auto-generated constructor stub
 	}
 	public Announcement(String ann_id, String company_name, String ann_info, String positions, int compensation,
-			String using_skill) {
+			String using_skill, String nation, String region) {
 		this.ann_id = ann_id;
 		this.company_name = company_name;
 		this.ann_info = ann_info;
 		this.positions = positions;
 		this.compensation = compensation;
 		this.using_skill = using_skill;
+		this.nation = nation;
+		this.region = region;
+	}
+	public String getNation() {
+		return nation;
+	}
+	public void setNation(String nation) {
+		this.nation = nation;
+	}
+	public String getRegion() {
+		return region;
+	}
+	public void setRegion(String region) {
+		this.region = region;
 	}
 	public String getAnn_id() {
 		return ann_id;

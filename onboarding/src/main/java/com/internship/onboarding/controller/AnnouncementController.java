@@ -38,5 +38,10 @@ public class AnnouncementController {
 	public ResponseEntity<List<Announcement>> schAnn(@RequestParam("company_name")String company_name){
 		return ResponseEntity.ok(service.schAnn(company_name));
 	}
+	
+	@RequestMapping("delete")
+	public ResponseEntity<String> deleteAnn(@RequestParam("ann_id")String ann_id){
+		return ResponseEntity.ok(service.deleteAnn(ann_id));
+	}
 
 }

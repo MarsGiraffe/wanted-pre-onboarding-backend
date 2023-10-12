@@ -11,4 +11,5 @@ public interface AnnouncementDao {
 	public int insertAnn(Announcement insert);
 	public int updateAnn(Announcement update);
 	public List<Announcement> schAnn(String company_name);
+	public int deleteAnn(String ann_id);
 }

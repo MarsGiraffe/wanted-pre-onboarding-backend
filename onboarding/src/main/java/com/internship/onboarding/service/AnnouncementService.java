@@ -25,4 +25,8 @@ public class AnnouncementService {
 		if(company_name==null) company_name="";
 		return dao.schAnn(company_name);
 	}
+	
+	public String deleteAnn(String ann_id) {
+		return dao.deleteAnn(ann_id)>0?"삭제성공":"삭제실패";
+	}
 }
