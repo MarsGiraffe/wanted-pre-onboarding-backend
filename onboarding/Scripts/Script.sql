@@ -37,11 +37,14 @@ INTO user_information VALUES (2,'박정호')
 INTO user_information VALUES (3,'홍지훈')
 SELECT * FROM dual;
 
+-- 공고 등록
 INSERT INTO ANNOUNCEMENT VALUES 
 ('AN001','삼성전자','신입 java 개발자 채용합니다.','백엔드 개발자',1000000,'JAVA,SPRING,ORACLE');
 
+-- 공고 전체 조회
 SELECT * FROM ANNOUNCEMENT a ORDER BY ANN_ID ;
 
+-- 공고 수정
 UPDATE ANNOUNCEMENT 
 	SET COMPANY_NAME = '네이버',
 		ANN_INFO = '',
@@ -50,10 +53,25 @@ UPDATE ANNOUNCEMENT
 		USING_SKILL = ''
 	WHERE ann_id = 'AN002';
 
+-- 공고 검색(회사명)
 SELECT a.*, c.NATION, c.REGION  
 FROM ANNOUNCEMENT a, COMPANY c 
 WHERE a.COMPANY_NAME = c.COMPANY_NAME 
-AND a.COMPANY_NAME like '%%'
+AND a.COMPANY_NAME like '%삼성전자%'
 ORDER BY ANN_ID;
 
+-- 공고 삭제
 DELETE announcement WHERE ann_id = 'AN010';
+
+-- 공고 상세페이지
+SELECT * FROM ANNOUNCEMENT a, COMPANY c 
+WHERE a.COMPANY_NAME = c.COMPANY_NAME 
+AND ANN_ID = 'AN001';
+
+-- 선택한 공고를 제외한 다른 공고 조회
+SELECT a.*, c.NATION, c.REGION  
+FROM ANNOUNCEMENT a, COMPANY c 
+WHERE a.COMPANY_NAME = c.COMPANY_NAME 
+AND a.COMPANY_NAME = '삼성전자'
+AND a.ANN_ID != 'AN005'
+ORDER BY ANN_ID;

@@ -31,4 +31,19 @@
 		DELETE announcement 
 		WHERE ann_id = #{ann_id}
 	</delete>
+	
+	<select id="detailAnn" parameterType="ann">
+		SELECT * FROM ANNOUNCEMENT a, COMPANY c 
+		WHERE a.COMPANY_NAME = c.COMPANY_NAME 
+		AND ANN_ID = #{ann_id}
+	</select>
+	
+	<select id="othersAnn" parameterType="ann">
+		SELECT a.*, c.NATION, c.REGION  
+		FROM ANNOUNCEMENT a, COMPANY c 
+		WHERE a.COMPANY_NAME = c.COMPANY_NAME 
+		AND a.COMPANY_NAME = #{company_name}
+		AND a.ANN_ID != #{ann_id}
+		ORDER BY ANN_ID
+	</select>
 </mapper>
