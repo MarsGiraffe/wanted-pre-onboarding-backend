@@ -7,5 +7,6 @@
 	<typeAliases>
 		<typeAlias alias="company" type="com.internship.onboarding.vo.Company"/>
 		<typeAlias alias="ann" type="com.internship.onboarding.vo.Announcement"/>
+		<typeAlias alias="app" type="com.internship.onboarding.vo.AnnApplication"/>
 	</typeAliases>
 </configuration>

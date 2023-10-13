@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.internship.onboarding.dao.AnnouncementDao;
+import com.internship.onboarding.vo.AnnApplication;
 import com.internship.onboarding.vo.Announcement;
 
 @Service
@@ -32,6 +33,15 @@ public class AnnouncementService {
 	}
 	public List<Announcement> othersAnn(Announcement others){
 		return dao.othersAnn(others);
+	}
+	public String annApply(AnnApplication app) {
+		String result = "";
+		if(dao.appHistory(app)>0) {
+			result = "이미 지원한 공고입니다.";
+		} else {
+			result = dao.annApply(app)>0?"지원완료":"지원실패";
+		}
+		return result;
 	}
 	
 }

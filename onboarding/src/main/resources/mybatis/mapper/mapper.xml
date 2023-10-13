@@ -46,4 +46,13 @@
 		AND a.ANN_ID != #{ann_id}
 		ORDER BY ANN_ID
 	</select>
+	
+	<insert id="annApply" parameterType="app">
+		INSERT INTO APPLY_HISTORY VALUES (#{user_id},#{ann_id})
+	</insert>
+	
+	<select id="appHistory" parameterType="app">
+		SELECT count(*) FROM APPLY_HISTORY 
+		WHERE USER_ID = #{user_id} AND ANN_ID = #{ann_id}
+	</select>
 </mapper>
