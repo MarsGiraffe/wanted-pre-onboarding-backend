@@ -43,5 +43,15 @@ public class AnnouncementController {
 	public ResponseEntity<String> deleteAnn(@RequestParam("ann_id")String ann_id){
 		return ResponseEntity.ok(service.deleteAnn(ann_id));
 	}
-
+	
+	@RequestMapping("detail")
+	public ResponseEntity<Announcement> detail(@RequestParam("ann_id")String ann_id){
+		return ResponseEntity.ok(service.detailAnn(ann_id));
+	}
+	
+	@RequestMapping("othersAnn")
+	public ResponseEntity<List<Announcement>> othersAnn(Announcement others){
+		return ResponseEntity.ok(service.othersAnn(others));
+	}
+	
 }
